@@ -9,7 +9,7 @@ const ae = "AE";
 export default function middleware(req: NextRequest) {
   const country = req.geo?.country;
 
-  if (req.nextUrl.pathname === "/bd") {
+  if ((req.nextUrl.pathname === "/bd", "/gb", "/us", "/ae")) {
     return NextResponse.next();
   }
 
