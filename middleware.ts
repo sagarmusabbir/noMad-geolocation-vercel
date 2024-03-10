@@ -6,26 +6,45 @@ const bd = "BD";
 const gb = "GB";
 const ae = "AE";
 
+export const config = {
+  matcher: "/",
+};
+
 export default function middleware(req: NextRequest) {
-  const country = req.geo?.country;
+  const country = req.geo?.country || "GB";
 
-  if ((req.nextUrl.pathname === "/bd", "/gb", "/us", "/ae")) {
-    return NextResponse.next();
-  }
-
-  if (country === us) {
-    return NextResponse.redirect("/us");
-  }
-
+  // Specify the correct pathname
   if (country === bd) {
-    return NextResponse.redirect("/bd");
+    req.nextUrl.pathname = "/bd";
+  } else if (country === us) {
+    req.nextUrl.pathname = `/us`;
+  } else if (country === ae) {
+    req.nextUrl.pathname = "/ae";
+  } else {
+    req.nextUrl.pathname = "/gb";
   }
+  // Rewrite to URL
+  return NextResponse.rewrite(req.nextUrl);
 
-  if (country === ae) {
-    return NextResponse.redirect("/ae");
-  }
+  // const country = req.geo?.country;
 
-  if (country === gb) {
-    return NextResponse.redirect("/gb");
-  }
+  // if (req.nextUrl.pathname === "/bd") {
+  //   return NextResponse.next();
+  // }
+
+  //   if (country === us) {
+  //     return NextResponse.redirect("/us");
+  //   }
+
+  // if (country === bd) {
+  //   return NextResponse.redirect("/bd");
+  // }
+
+  //   if (country === ae) {
+  //     return NextResponse.redirect("/ae");
+  //   }
+
+  //   if (country === gb) {
+  //     return NextResponse.redirect("/gb");
+  //   }
 }
