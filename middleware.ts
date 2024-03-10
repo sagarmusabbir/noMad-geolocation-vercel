@@ -9,13 +9,17 @@ const ae = "AE";
 export default function middleware(req: NextRequest) {
   const country = req.geo?.country;
 
+  if ((req.nextUrl.pathname === "/us", "/gb", "/ae", "/bd")) {
+    return NextResponse.next();
+  }
+
   if (country === us) {
-    return NextResponse.redirect("./us");
+    return NextResponse.redirect("/us");
   } else if (country === bd) {
-    return NextResponse.redirect("./bd");
+    return NextResponse.redirect("/bd");
   } else if (country === ae) {
-    return NextResponse.redirect("./ae");
+    return NextResponse.redirect("/ae");
   } else if (country === gb) {
-    return NextResponse.redirect("./gb");
+    return NextResponse.redirect("/gb");
   }
 }
