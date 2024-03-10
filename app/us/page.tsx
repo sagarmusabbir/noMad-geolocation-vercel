@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex flex-row w-screen h-screen justify-center items-center space-x-10 py-10">
-      <h1 className="text-4xl items-center">My Home Page</h1>
+      <h1 className="text-4xl items-center">US</h1>
       <h1 className="text-4xl items-center">My Home Page</h1>
     </main>
   );
