@@ -18,13 +18,13 @@ export default function middleware(req: NextRequest) {
 
   // Specify the correct pathname
   if (country === bd) {
-    req.nextUrl.pathname = "/ae";
+    req.nextUrl.pathname = "/bd";
   } else if (country === us) {
     req.nextUrl.pathname = `/us`;
   } else if (country === ae) {
     req.nextUrl.pathname = "/ae";
   } else {
-    req.nextUrl.pathname = "/";
+    req.nextUrl.pathname = "/gb";
   }
   // Rewrite to URL
   return NextResponse.rewrite(req.nextUrl);
