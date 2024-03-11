@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const us = "US";
-const bd = "BD";
-const gb = "GB";
-const ae = "AE";
+//declare & store country
+const us = "US",
+  bd = "BD",
+  gb = "GB",
+  ae = "AE";
 
 export const config = {
   matcher: "/",
@@ -15,13 +16,13 @@ export default function middleware(req: NextRequest) {
 
   // Specify the correct pathname
   if (country === bd) {
-    req.nextUrl.pathname = "/bd";
+    req.nextUrl.pathname = "/ae";
   } else if (country === us) {
     req.nextUrl.pathname = `/us`;
   } else if (country === ae) {
     req.nextUrl.pathname = "/ae";
   } else {
-    req.nextUrl.pathname = "/gb";
+    req.nextUrl.pathname = "/";
   }
   // Rewrite to URL
   return NextResponse.rewrite(req.nextUrl);
