@@ -12,7 +12,9 @@ export const config = {
 };
 
 export default function middleware(req: NextRequest) {
-  const country = req.geo?.country || "GB";
+  // const country = req.geo?.country || "GB";
+
+  const country = (req.geo && req.geo.country) || "GB";
 
   // Specify the correct pathname
   if (country === bd) {
