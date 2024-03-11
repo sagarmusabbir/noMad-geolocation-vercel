@@ -27,7 +27,8 @@ export default function middleware(req: NextRequest) {
     req.nextUrl.pathname = "/gb";
   }
   // Rewrite to URL
-  return NextResponse.rewrite(req.nextUrl);
+  // return NextResponse.rewrite(req.nextUrl);
+  return NextResponse.redirect(req.nextUrl);
 
   // const country = req.geo?.country;
 
